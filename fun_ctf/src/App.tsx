@@ -17,20 +17,20 @@ function App() {
     var width = q.current.width = window.innerWidth;
     var height = q.current.height = window.innerHeight;
     var letters: any = Array(256).join(String(1)).split('');
+    //['1',,,,'1']
 
     var draw = function () {
       q.current.getContext('2d').fillStyle = 'rgba(0,0,0,.05)';
-      q.current.getContext('2d').fillRect(0, 0, width, height);
+      q.current.getContext('2d').fillRect(0, 0, width, height);//overlay
       q.current.getContext('2d').fillStyle = '#0F0';
       letters.map(function (y_pos: string, index: number) {
         const text = String.fromCharCode(3e4 + Math.random() * 33);
         const x_pos = index * 10;
         q.current.getContext('2d').fillText(text, x_pos, y_pos);
-        letters[index] = (parseFloat(y_pos) > 758 + Math.random() * 1e4) ? 0 : y_pos + 10;
+        letters[index] = (parseFloat(y_pos) > 758 + Math.random() * 1e4) ? 0 : y_pos + 40;
       });
     };
     setInterval(draw, 33);
-
   });
 
   return (
