@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" method="post">
+      <div>
+        <label for="script">Type Script!</label>
+        <input type="text" id="scripting" />
+      </div>
+      <input type="submit" value="send" id="checkButton" />
+    </form>
+    
+    <script>
+      function CheckXSS() {
+        let str = element.value;
+        let re = /.*<script>alert(.+)<\/script>.*/gui;       
+        if (re.test(str)) {
+          alert(0);
+          alert("おめでとう！\nflag{congratulations}")
+          console.log("ok")
+        }
+      }      
+      let element = document.getElementById("scripting");
+      checkButton.addEventListener("click", CheckXSS);
+    </script>
+  </body>
+</html>
