@@ -62,7 +62,29 @@ function App() {
   });
 
   const problemList=[
-    {title:"増殖するトマト",problemSentences:<p>トマトはおいしい、されど空はどこまでも高く広がるようだ。まるで、でかいクッキーを取り残していくように。</p>,ans:"0023"},
+    {title:"裸のネットワーク",problemSentences:
+        <p>
+            あなたの大学の講義では、先生の個人的に作成したサイトが使われます。
+            <br></br>
+            どうやら、そのサイトを利用している生徒の個人情報が漏洩しているようです。
+            <br></br>
+            しかし、先生はそれを認めません。そこであなたは先生に漏洩を証明するため、パケットをキャプチャしました。
+            <br></br>
+            ユーザー名がTeacherのパスワードを取得し、hacking&#123;パスワード&#125;の形式で提出してください。
+            <br></br>
+            <br></br>
+            あなたの大学のwifiの情報
+            <br></br>
+            ssid: free-wifi-desu
+            <br></br>
+            pass: free-wifi-desu
+            <br></br>
+            <br></br>
+            <a href="https://gist.github.com/takehr/532a652a685342c0216791467eb17a71/raw/cf81c773d159fc2efa6f26565a2f59667f4343c2/capture.cap" download>
+            capture&#46;cap
+            </a>
+        </p>
+    ,ans:"hacking{sensei}"},
     {title:"美しい空",problemSentences:<p>トマトはおいしい、されど空はどこまでも高く広がるようだ。まるで、でかいクッキーを取り残していくように。</p>,ans:"0023"},
     {title:"でかいクッキー",problemSentences:<p>トマトはおいしい、されど空はどこまでも高く広がるようだ。まるで、でかいクッキーを取り残していくように。</p>,ans:"0023"},
     {title:"扇風機",problemSentences:<p>トマトはおいしい、<br></br>されど空はどこまでも高く広がるようだ。<br></br>まるで、でかいクッキーを取り残していくように。</p>,ans:"0023"}
