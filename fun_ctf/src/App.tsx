@@ -80,7 +80,7 @@ function App() {
             pass: free-wifi-desu
             <br></br>
             <br></br>
-            <a href="https://gist.github.com/takehr/532a652a685342c0216791467eb17a71/raw/cf81c773d159fc2efa6f26565a2f59667f4343c2/capture.cap" download>
+            <a onClick = {(e) => e.stopPropagation()} href="https://gist.github.com/takehr/532a652a685342c0216791467eb17a71/raw/cf81c773d159fc2efa6f26565a2f59667f4343c2/capture.cap" download>
             capture&#46;cap
             </a>
         </p>

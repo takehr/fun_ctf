@@ -90,7 +90,7 @@ body {
 }
 
 div.list-element {
-  margin-bottom: 0px;
+  margin-bottom: 30px;
   margin-left:0px;
   animation: 6s ease-in 0s 1 showUp,
   blink_clearly infinite 1.3s 6s cubic-bezier(0.1, -10, 0.8, -10) alternate-reverse;
