@@ -46,6 +46,8 @@ function App() {
     var height = q.current.height = window.innerHeight*3;
     var letters: any = Array(256).join(String(1)).split('');
     //['1',,,,'1']
+    
+
 
     var draw = function () {
       q.current.getContext('2d').fillStyle = 'rgba(0,0,0,.05)';
@@ -57,13 +59,22 @@ function App() {
         q.current.getContext('2d').fillText(text, x_pos, y_pos);
         letters[index] = (parseFloat(y_pos) > 758 + Math.random() * 1e4) ? 0 : y_pos + 40;
       });
+
+      //左から20上から40の位置に、幅50高さ100の四角形を描く
+      
+      q.current.getContext('2d').strokeStyle = 'rgb(00,00,255)'; //枠線の色は青
+      q.current.getContext('2d').fillStyle = 'rgba(0,00,00,0.6)'; //塗りつぶしの色は赤
+//      q.current.getContext('2d').fillStyle = 'rgba(255,255,255,0.6)'; //塗りつぶしの色は赤
+      q.current.getContext('2d').fillRect(200,0,860,4000);
+        
+      //色を指定する
     };
     setInterval(draw, 33);
   });
 
   const problemList=[
     {title:"裸のネットワーク",problemSentences:
-        <p>
+        <p onClick = {(e) => e.stopPropagation()}>
             あなたの大学の講義では、先生の個人的に作成したサイトが使われます。
             <br></br>
             どうやら、そのサイトを利用している生徒の個人情報が漏洩しているようです。
