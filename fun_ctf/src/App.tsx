@@ -65,7 +65,7 @@ function App() {
       q.current.getContext('2d').strokeStyle = 'rgb(00,00,255)'; //枠線の色は青
       q.current.getContext('2d').fillStyle = 'rgba(0,00,00,0.6)'; //塗りつぶしの色は赤
 //      q.current.getContext('2d').fillStyle = 'rgba(255,255,255,0.6)'; //塗りつぶしの色は赤
-      q.current.getContext('2d').fillRect(200,0,860,4000);
+      q.current.getContext('2d').fillRect(width/2-430,0,860,4000);
         
       //色を指定する
     };
