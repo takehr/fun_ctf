@@ -26,6 +26,7 @@ body {
   /*font-family: serif;*/
   font-family: 'Ricty Diminished', 'Monaco', 'Consolas', 'Courier New', Courier, monospace, sans-serif;
 }
+
 .Head {
   font-size: 3rem;
   padding: 30px;
@@ -35,14 +36,8 @@ body {
   width:fit-content;
   margin-left: auto;
   margin-right: auto;
-/*  font-family: 'Raleway', sans-serif;*/
-  
-  /*border: solid 1px;
-  border-color: black;*/
-/*  animation: 3s 0s 1 cubic-bezier(0.4, 4.88, 0.75, -1.85) Damping,
-*/
-  animation: 6s 0s 1 ease-in showUp,
-  blink infinite 1.9s 6s cubic-bezier(0.1, -10, 0.8, -10) alternate-reverse;
+  animation: 2s 0s 1 ease-in showUp,
+  blink infinite 1.9s 2s cubic-bezier(0.1, -10, 0.8, -10) alternate-reverse;
 }
 
 .App>hr {
@@ -79,7 +74,6 @@ body {
   }
 }
 
-
 @keyframes slideInFromLeft {
   0% {
     transform: translateX(-100%);
@@ -92,8 +86,8 @@ body {
 div.list-element {
   margin-bottom: 30px;
   margin-left:0px;
-  animation: 6s ease-in 0s 1 showUp,
-  blink_clearly infinite 1.3s 6s cubic-bezier(0.1, -10, 0.8, -10) alternate-reverse;
+  animation: 2s ease-in 0s 1 showUp,
+  blink_clearly infinite 1.3s 2s cubic-bezier(0.1, -10, 0.8, -10) alternate-reverse;
 }
 
 @keyframes inflate{
@@ -102,13 +96,14 @@ div.list-element {
     opacity: 0;
   }
   100%{
-    height: 500px;
+    height: 40rem;
     opacity: 1;
   }
 }
+
 @keyframes deflate{
   0%{
-    height: 400px;
+    height: 40rem;
     opacity: 1;
   }
   100%{
@@ -156,7 +151,6 @@ input{
   --color: #00ffdd;
   color: transparent;
   text-shadow: 0 0 1px rgba(0,255,255,1);
-
   border: solid 1px;
   background-color: rgba(0,255,240, 0);
   border-color: black;
@@ -220,23 +214,6 @@ button{
   }
 }
 
-.container {
-  --color: #00ffdd;
-  color: transparent;
-  text-shadow: 0 0 1px rgba(0,255,255,1);
-  font-size: 3rem;
-  display: flex;
-/*  font-family: Georgia, 'Times New Roman', Times, serif;*/
-  font-family: 'Ricty Diminished', 'Monaco', 'Consolas', 'Courier New', Courier, monospace, sans-serif;
-
-  position: fixed;
-  margin-top: 3rem;
-  width: 100vw;
-  text-align: center;
-  top:0px;
-  flex-direction: column;
-  animation: blink infinite 1.9s 1.1s cubic-bezier(0.1, -10, 0.8, -10) alternate-reverse;
-}
 
 .problem{
   font-size: 1.3rem;
