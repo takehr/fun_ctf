@@ -15,6 +15,9 @@ function Problem(props:{title:string, problemSentences:any, ans:string, editoria
               <div className='problem-sentences-inflate'>
                 {props.editorial}
               </div>
+              <button style={{textAlign:"right",width:"800px"}} onClick={(e)=>{e.stopPropagation(); setCheckEditorial(checkEditorial===0?1:-checkEditorial)}}>
+                  問題に戻る
+              </button>
             :
               <div className='problem-sentences-inflate'>
                 <br></br>{props.problemSentences}
@@ -25,6 +28,7 @@ function Problem(props:{title:string, problemSentences:any, ans:string, editoria
                   e.stopPropagation();
                   if(flag===props.ans){
                     alert("Correct!!");
+                    setCheckEditorial(1);
                   }else alert("flase");
                   }}>submit</button>
                   <br></br>
@@ -37,6 +41,9 @@ function Problem(props:{title:string, problemSentences:any, ans:string, editoria
               <div className='problem-sentences-deflate'>
                 {props.editorial}
               </div>
+              <button style={{textAlign:"right",width:"800px"}} onClick={(e)=>{e.stopPropagation(); setCheckEditorial(checkEditorial===0?1:-checkEditorial)}}>
+                  問題に戻る
+              </button>
             :
               <div className='problem-sentences-deflate'>
                 <br></br>{props.problemSentences}
@@ -46,8 +53,10 @@ function Problem(props:{title:string, problemSentences:any, ans:string, editoria
                   e.preventDefault();
                   e.stopPropagation();
                   if(flag===props.ans){
-                    alert("Correct!!");
-                  }else alert("flase");
+                    setCheckEditorial(1);
+                  }else{
+                    
+                  }
                   }}>submit</button>
                   <br></br>
                 <button style={{textAlign:"right"}}>
