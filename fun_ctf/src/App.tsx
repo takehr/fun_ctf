@@ -2,86 +2,88 @@ import React, { useEffect, useRef, useState } from 'react';
 import { JsxElement } from 'typescript';
 import './App.css';
 
-function Problem(props:{title:string, problemSentences:any, ans:string, editorial:any}){
-    const [clicked,setClicked] = useState<number>(0);
-    const [checkEditorial,setCheckEditorial] = useState<number>(0);
-    const [flag, setFlag] = useState<string>("")
+function Problem(props: { title: string, problemSentences: any, ans: string, editorial: any }) {
+    const [clicked, setClicked] = useState<number>(0);
+    const [checkEditorial, setCheckEditorial] = useState<number>(0);
+    const [flag, setFlag] = useState<string>("");
+    const inputId = "id" + Math.random().toString().replace(".", "d");
     return (
-        <div className='list-element' onClick={()=>setClicked(clicked===0?1:-clicked)}>
-        {props.title}
-        {
-            clicked === 1 ?
-                checkEditorial===1?
-                <div className='problem-sentences-inflate'>
-                {props.editorial}
-                <button style={{textAlign:"right"}} onClick={(e)=>{e.stopPropagation(); setCheckEditorial(-1)}}>
-                <br></br>
-                問題に戻る
-                </button>
-                </div>
-                :
-                <div className='problem-sentences-inflate'>
-                <br></br>{props.problemSentences}
-                <input className="deny" type="text" value={flag} onClick={(e)=>{e.stopPropagation();}} onChange= {e => setFlag(e.target.value)} placeholder="flag"></input>
-                <br></br>
-                <button onClick={(e)=>{
-                    e.preventDefault();
-                    e.stopPropagation();
-                    if(flag===props.ans){
-                        const input = document.querySelector("input") as HTMLElement | null;
-                        if(input!=null){
-                            input.classList.toggle("correct");
-                            setTimeout(() => {input.classList.toggle("correct");setCheckEditorial(1);}, 3000);
-                        }
-                    }else{
-                        const input = document.querySelector("input") as HTMLElement | null;
-                        if(input!=null){
-                            input.classList.toggle("deny");
-                            setTimeout(() => input.classList.toggle("deny"), 30);
-                        }
-                    }
-                }}>submit</button>
-                <br></br>
-                <button style={{textAlign:"right"}} onClick={(e)=>{e.stopPropagation(); setCheckEditorial(1)}}>
-                <br></br>
-                解説をみる
-                </button>
-                </div>
-                :clicked===-1?
-                checkEditorial===1?
-                <div className='problem-sentences-deflate'>
-                {props.editorial}
-                <button style={{textAlign:"right"}} onClick={(e)=>{e.stopPropagation(); setCheckEditorial(-1)}}>
-                問題に戻る
-                </button>
-                </div>
-                :
-                <div className='problem-sentences-deflate'>
-                <br></br>{props.problemSentences}
-                <input type="text" value={flag} onClick={(e)=>{e.stopPropagation();}} onChange= {e => setFlag(e.target.value)} placeholder="flag"></input>
-                <br></br>
-                <button onClick={(e)=>{
-                    e.preventDefault();
-                    e.stopPropagation();
-                    if(flag===props.ans){
-                        setCheckEditorial(1);
-                    }else{
-                        const input = document.querySelector("input")
-                        if(input!=null){
-                            input.style.animationDuration="0.7";
-                            input.style.animationName="";
-                            input.style.animationName="Shiver";
-                        }
-                    }
-                }}>submit</button>
-                <br></br>
-                <button style={{textAlign:"right"}} onClick={(e)=>{e.stopPropagation(); setCheckEditorial(1)}}>
-                解説をみる
-                </button>
-                </div>
-                :undefined
-        }
-        {/*        <hr></hr>
+        <div className='list-element' onClick={() => setClicked(clicked === 0 ? 1 : -clicked)}>
+            {props.title}
+            {
+                clicked === 1 ?
+                    checkEditorial === 1 ?
+                        <div className='problem-sentences-inflate'>
+                            {props.editorial}
+                            <button style={{ textAlign: "right" }} onClick={(e) => { e.stopPropagation(); setCheckEditorial(-1) }}>
+                                <br></br>
+                                問題に戻る
+                            </button>
+                        </div>
+                        :
+                        <div className='problem-sentences-inflate'>
+                            <br></br>{props.problemSentences}
+                            <input id={inputId} className="deny" type="text" value={flag} onClick={(e) => { e.stopPropagation(); }} onChange={e => setFlag(e.target.value)} placeholder="flag"></input>
+                            <br></br>
+                            <button onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                if (flag === props.ans) {
+                                    const input = document.querySelector("#" + inputId) as HTMLElement | null;
+                                    if (input != null) {
+                                        input.classList.toggle("correct");
+                                        setTimeout(() => { input.classList.toggle("correct"); setCheckEditorial(1); }, 3000);
+                                    }
+                                } else {
+                                    const input = document.querySelector("#" + inputId) as HTMLElement | null;
+                                    if (input != null) {
+                                        input.classList.toggle("deny");
+                                        setTimeout(() => input.classList.toggle("deny"), 30);
+                                    }
+                                }
+                            }}>submit</button>
+                            <br></br>
+                            <button style={{ textAlign: "right" }} onClick={(e) => { e.stopPropagation(); setCheckEditorial(1) }}>
+                                <br></br>
+                                解説をみる
+                            </button>
+                        </div>
+                    : clicked === -1 ?
+                        checkEditorial === 1 ?
+                            <div className='problem-sentences-deflate'>
+                                {props.editorial}
+                                <button style={{ textAlign: "right" }} onClick={(e) => { e.stopPropagation(); setCheckEditorial(-1) }}>
+                                    問題に戻る
+                                </button>
+                            </div>
+                            :
+                            <div className='problem-sentences-deflate'>
+                                <br></br>{props.problemSentences}
+                                <input id={inputId} type="text" value={flag} onClick={(e) => { e.stopPropagation(); }} onChange={e => setFlag(e.target.value)} placeholder="flag"></input>
+                                <br></br>
+                                <button onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    if (flag === props.ans) {
+                                        setCheckEditorial(1);
+                                    } else {
+                                        const input = document.querySelector("#" + inputId) as HTMLElement | null;
+                                        if (input != null) {
+                                            input.style.animationDuration = "0.7";
+                                            input.style.animationName = "";
+                                            input.style.animationName = "Shiver";
+                                        }
+                                    }
+                                }}>submit</button>
+                                <br></br>
+                                <button style={{ textAlign: "right" }} onClick={(e) => { e.stopPropagation(); setCheckEditorial(1) }}>
+                                <br></br>
+                                    解説をみる
+                                </button>
+                            </div>
+                        : undefined
+            }
+            {/*        <hr></hr>
           */}
         </div>
     )
@@ -89,9 +91,9 @@ function Problem(props:{title:string, problemSentences:any, ans:string, editoria
 
 function App() {
 
-    var q:any = useRef(null)
+    var q: any = useRef(null)
 
-    useEffect( ()=>{
+    useEffect(() => {
         //    const scriptUrl = document.createElement('script');
         //    scriptUrl.innerHTML =
         //    `
@@ -219,7 +221,7 @@ function App() {
         //    document.head.appendChild(scriptUrl);
 
         var width = q.current.width = window.innerWidth;
-        var height = q.current.height = window.innerHeight*3;
+        var height = q.current.height = window.innerHeight * 3;
         var letters: any = Array(256).join(String(1)).split('');
         //['1',,,,'1']
 
@@ -238,87 +240,88 @@ function App() {
 
             q.current.getContext('2d').strokeStyle = 'rgb(00,00,255)';
             q.current.getContext('2d').fillStyle = 'rgba(0,00,00,0.6)';
-            q.current.getContext('2d').fillRect(width/2-430,0,860,4000);
+            q.current.getContext('2d').fillRect(width / 2 - 430, 0, 860, 4000);
 
             //色を指定する
         };
         setInterval(draw, 33);
     });
 
-    const problemList=[
-        {title:"裸のネットワーク",problemSentences:
-            <p onClick = {(e) => e.stopPropagation()}>
-            あなたの大学の講義では、先生の個人的に作成したサイトが使われます。
-            <br></br>
-            どうやら、そのサイトを利用している生徒の個人情報が漏洩しているようです。
-            <br></br>
-            しかし、先生はそれを認めません。そこであなたは先生に漏洩を証明するため、パケットをキャプチャしました。
-            <br></br>
-            ユーザー名がTeacherのパスワードを取得し、hacking&#123;パスワード&#125;の形式で提出してください。
-            <br></br>
-            <br></br>
-            あなたの大学のwifiの情報
-            <br></br>
-            ssid: free-wifi-desu
-            <br></br>
-            pass: free-wifi-desu
-            <br></br>
-            <br></br>
-            <a onClick = {(e) => e.stopPropagation()} href="https://gist.github.com/takehr/532a652a685342c0216791467eb17a71/raw/cf81c773d159fc2efa6f26565a2f59667f4343c2/capture.cap" download>
-            capture&#46;cap
-            </a>
-            </p>,
-            ans:"hacking{sensei}",
+    const problemList = [
+        {
+            title: "裸のネットワーク", problemSentences:
+                <p onClick={(e) => e.stopPropagation()}>
+                    あなたの大学の講義では、先生の個人的に作成したサイトが使われます。
+                    <br></br>
+                    どうやら、そのサイトを利用している生徒の個人情報が漏洩しているようです。
+                    <br></br>
+                    しかし、先生はそれを認めません。そこであなたは先生に漏洩を証明するため、パケットをキャプチャしました。
+                    <br></br>
+                    ユーザー名がTeacherのパスワードを取得し、hacking&#123;パスワード&#125;の形式で提出してください。
+                    <br></br>
+                    <br></br>
+                    あなたの大学のwifiの情報
+                    <br></br>
+                    ssid: free-wifi-desu
+                    <br></br>
+                    pass: free-wifi-desu
+                    <br></br>
+                    <br></br>
+                    <a onClick={(e) => e.stopPropagation()} href="https://gist.github.com/takehr/532a652a685342c0216791467eb17a71/raw/cf81c773d159fc2efa6f26565a2f59667f4343c2/capture.cap" download>
+                        capture&#46;cap
+                    </a>
+                </p>,
+            ans: "hacking{sensei}",
             editorial:
-            <div>
-            <br></br>
-            <br></br>
-            <h1>解説</h1>
-            <h3>HTTPを利用しているサイトは危険だとなぜ言われているのでしょうか？</h3>
-            <p>
-            実はHTTPのサイトを利用することが必ずしも危険というわけではありません。
-            <br></br>
-            例えば、この問題の状況では、free-wifiを利用していなければ情報の漏洩は起こらない可能性が高いでしょう。
-            <br></br>
-            また、信頼のできないサイトの場合、HTTPSを利用していても情報は漏洩する可能性があります。
-            <br></br>
-            つまり、信頼のできるサイト・通信経路を利用している場合は、HTTPの利用に危険はありません。
-            <br></br>
-            ではなぜ危険と言われるのでしょう？
-            <br></br>
-            問題は、通信経路に悪意のある第三者が介入できる状況に発生します。
-            <br></br>
-            この状況は、多くの人にとって身近な通信経路であるfree-wifiを通した通信も当てはまります。
-            <br></br>
-            free-wifiではサーバーに送信するデータをfree-wifiのパスワードを用いて暗号化されます。
-            <br></br>
-            そのため、free-wifiのパスワードを知っている人なら誰でも情報を復号化できます。
-            <br></br>
-            そのため、free-wifiを利用する多くの人にとってHTTPの利用は危険だと考えられるのです。
-            </p>
-            <br></br>
-            <br></br>
-            <h2>Coffee break</h2>
-            <h3>Wire Shark</h3>
-            <p>Wire Sharkとはネットワークのパケット解析用ソフトウェアです。
-            <br></br>
-            インストール方法、基本的な使い方、見方、読み込み法、
-            </p>
-            </div>
+                <div>
+                    <br></br>
+                    <br></br>
+                    <h1>解説</h1>
+                    <h3>HTTPを利用しているサイトは危険だとなぜ言われているのでしょうか？</h3>
+                    <p>
+                        実はHTTPのサイトを利用することが必ずしも危険というわけではありません。
+                        <br></br>
+                        例えば、この問題の状況では、free-wifiを利用していなければ情報の漏洩は起こらない可能性が高いでしょう。
+                        <br></br>
+                        また、信頼のできないサイトの場合、HTTPSを利用していても情報は漏洩する可能性があります。
+                        <br></br>
+                        つまり、信頼のできるサイト・通信経路を利用している場合は、HTTPの利用に危険はありません。
+                        <br></br>
+                        ではなぜ危険と言われるのでしょう？
+                        <br></br>
+                        問題は、通信経路に悪意のある第三者が介入できる状況に発生します。
+                        <br></br>
+                        この状況は、多くの人にとって身近な通信経路であるfree-wifiを通した通信も当てはまります。
+                        <br></br>
+                        free-wifiではサーバーに送信するデータをfree-wifiのパスワードを用いて暗号化されます。
+                        <br></br>
+                        そのため、free-wifiのパスワードを知っている人なら誰でも情報を復号化できます。
+                        <br></br>
+                        そのため、free-wifiを利用する多くの人にとってHTTPの利用は危険だと考えられるのです。
+                    </p>
+                    <br></br>
+                    <br></br>
+                    <h2>Coffee break</h2>
+                    <h3>Wire Shark</h3>
+                    <p>Wire Sharkとはネットワークのパケット解析用ソフトウェアです。
+                        <br></br>
+                        インストール方法、基本的な使い方、見方、読み込み法、
+                    </p>
+                </div>
         },
-        {title:"美しい空",problemSentences:<p>トマトはおいしい、されど空はどこまでも高く広がるようだ。まるで、でかいクッキーを取り残していくように。</p>,ans:"0023",editorial:""},
-        {title:"でかいクッキー",problemSentences:<p>トマトはおいしい、されど空はどこまでも高く広がるようだ。まるで、でかいクッキーを取り残していくように。</p>,ans:"0023",editorial:""},
-        {title:"扇風機",problemSentences:<p>トマトはおいしい、<br></br>されど空はどこまでも高く広がるようだ。<br></br>まるで、でかいクッキーを取り残していくように。</p>,ans:"0023",editorial:""}
+        { title: "美しい空", problemSentences: <p>トマトはおいしい、されど空はどこまでも高く広がるようだ。まるで、でかいクッキーを取り残していくように。</p>, ans: "0023", editorial: "" },
+        { title: "でかいクッキー", problemSentences: <p>トマトはおいしい、されど空はどこまでも高く広がるようだ。まるで、でかいクッキーを取り残していくように。</p>, ans: "0023", editorial: "" },
+        { title: "扇風機", problemSentences: <p>トマトはおいしい、<br></br>されど空はどこまでも高く広がるようだ。<br></br>まるで、でかいクッキーを取り残していくように。</p>, ans: "0023", editorial: "" }
     ]
 
     return (
         <div className="App">
-        <canvas ref={q}></canvas>
-        <div className='Head'>fun_ctf</div>
-        {
-            problemList.map( (li) =>
-                <Problem title= {li.title} problemSentences={li.problemSentences} ans={li.ans} editorial={li.editorial}></Problem>)
-        }
+            <canvas ref={q}></canvas>
+            <div className='Head'>fun_ctf</div>
+            {
+                problemList.map((li) =>
+                    <Problem title={li.title} problemSentences={li.problemSentences} ans={li.ans} editorial={li.editorial}></Problem>)
+            }
         </div>
     );
 }
