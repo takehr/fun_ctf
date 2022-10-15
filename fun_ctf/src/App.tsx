@@ -14,7 +14,7 @@ function Problem(props:{title:string, problemSentences:any, ans:string, editoria
                 checkEditorial===1?
                 <div className='problem-sentences-inflate'>
                 {props.editorial}
-                <button style={{textAlign:"right",width:"800px"}} onClick={(e)=>{e.stopPropagation(); setCheckEditorial(-1)}}>
+                <button style={{textAlign:"right"}} onClick={(e)=>{e.stopPropagation(); setCheckEditorial(-1)}}>
                 <br></br>
                 問題に戻る
                 </button>
@@ -42,7 +42,7 @@ function Problem(props:{title:string, problemSentences:any, ans:string, editoria
                     }
                 }}>submit</button>
                 <br></br>
-                <button style={{textAlign:"right",width:"800px"}} onClick={(e)=>{e.stopPropagation(); setCheckEditorial(1)}}>
+                <button style={{textAlign:"right"}} onClick={(e)=>{e.stopPropagation(); setCheckEditorial(1)}}>
                 <br></br>
                 解説をみる
                 </button>
@@ -51,7 +51,7 @@ function Problem(props:{title:string, problemSentences:any, ans:string, editoria
                 checkEditorial===1?
                 <div className='problem-sentences-deflate'>
                 {props.editorial}
-                <button style={{textAlign:"right",width:"800px"}} onClick={(e)=>{e.stopPropagation(); setCheckEditorial(-1)}}>
+                <button style={{textAlign:"right"}} onClick={(e)=>{e.stopPropagation(); setCheckEditorial(-1)}}>
                 問題に戻る
                 </button>
                 </div>
@@ -75,7 +75,7 @@ function Problem(props:{title:string, problemSentences:any, ans:string, editoria
                     }
                 }}>submit</button>
                 <br></br>
-                <button style={{textAlign:"right",width:"800px"}} onClick={(e)=>{e.stopPropagation(); setCheckEditorial(1)}}>
+                <button style={{textAlign:"right"}} onClick={(e)=>{e.stopPropagation(); setCheckEditorial(1)}}>
                 解説をみる
                 </button>
                 </div>
