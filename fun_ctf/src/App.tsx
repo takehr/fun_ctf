@@ -249,7 +249,7 @@ function App() {
 
     const problemList = [
         {
-            title: "裸のネットワーク", problemSentences:
+            title: "Naked Network", problemSentences:
                 <p onClick={(e) => e.stopPropagation()}>
                     あなたの大学の講義では、先生の個人的に作成したサイトが使われます。
                     <br></br>
@@ -309,7 +309,111 @@ function App() {
                     </p>
                 </div>
         },
-        { title: "美しい空", problemSentences: <p>トマトはおいしい、されど空はどこまでも高く広がるようだ。まるで、でかいクッキーを取り残していくように。</p>, ans: "0023", editorial: "" },
+        { 
+            title: "Rivest… Shamir… Adleman!!",
+            problemSentences:
+                <p onClick={(e) => e.stopPropagation()}>
+                    あなたは受託開発を主とする企業に勤めています。
+                    <br></br>
+                    開発のため、取引先からOpenSSH形式の公開鍵が送られてきました。
+                    <br></br>
+                    しかし、その公開鍵に問題があるようです。
+                    <br></br>
+                    ところが、取引先の人は納得していません。
+                    <br></br>
+                    そこで、取引先の人の用意した暗号文を解読して、
+                    <br></br>
+                    hacking&#123;復号化した文&#125;の形式で提出してください。
+                    <br></br>
+                    <br></br>
+                    暗号文
+                    <br></br>
+                    <br></br>
+                    <div onClick={(e) => e.stopPropagation()}>
+                        59171618157625834911998993598558781850291
+                    </div>
+                    <br></br>
+                    <br></br>
+                    問題のある公開鍵
+                    <br></br>
+                    <a onClick={(e) => e.stopPropagation()} href="data:text/plain;base64,c3NoLXJzYSBBQUFBQjNOemFDMXljMkVBQUFBQkN3QUFBQklCQTdnUElxWmdWRTBIME1pckhTa0NxOVU9IHJlbW90ZUBERVNLVE9QLUZVTl9DVEYyMDIy" download="id_rsa.pub">
+                        id_rsa&#46;pub
+                    </a>
+                </p>,
+            ans: "hacking{Hello_decryption!}",
+            editorial: 
+                <div>
+                    <br></br>
+                    <br></br>
+                    <h1>解説</h1>
+                    <h3>RSA暗号とは</h3>
+                    <p>
+                        現代では様々ある暗号の中でも、
+                        <br></br>
+                        暗号化・復号化に鍵と呼ばれる合言葉のようなものを必要とする暗号である
+                        <br></br>
+                        共通鍵暗号、公開鍵暗号の2種類が良く使われています。
+                        <br></br>
+                        共通鍵暗号方式では暗号化・復号化で用いる鍵が同じである一方、
+                        <br></br>
+                        公開鍵暗号方式では暗号化では公開鍵、復号化では秘密鍵とそれぞれ違う鍵を使います。
+                        <br></br>
+
+                        <br></br>
+                        本問題では、公開鍵暗号方式の中で最もよく使われているRSA暗号を扱っています。
+                        <br></br>
+                        RSA暗号とは、非常に大きい数の素因数分解は現実的な時間で計算ができない
+                        <br></br>
+                        という仮設から考えられた公開鍵暗号方式の暗号です。
+                        <br></br>
+                        具体的には、元文をM, 暗号文をC, 公開鍵をe, n, 秘密鍵をd, 暗号に用いる素数をp,qとしたとき
+                        <br></br>
+                        n=p*q
+                        <br></br>
+                        phi = (p-1) * (q-1)
+                        <br></br>
+                        d=e^(phi-2) mod phi
+                        <br></br>
+                        C=M^e mod n
+                        <br></br>
+                        M=C^d mod n
+                        <br></br>
+                        という関係になっています。
+                        <br></br>
+                        また、本問題ではOpenSSH形式で公開鍵が取得できるため、OpenSSH形式に従って公開鍵を確認すると、
+                        <br></br>
+                        e=11, n=88377789570983978556045513843723192150997 であることがわかります。
+                        <br></br>
+                        本問題ではnが小さいため素因数分解が可能であり、
+                        <br></br>
+                        p=676421558270641, q=130654897808007778425046117となります。
+                        <br></br>
+                        よって、
+                        <br></br>
+                        phi = (p-1) * (q-1) ＝88377789570983847901147705159523208834240
+                        <br></br>
+                        d=e^(phi-2) mod phi =40171722532265385409612593254328731288291
+                        <br></br>
+                        M=C^d mod n =24635145413266653314682365226381229387297
+                        <br></br>
+                        MをASCIIコードでアルファベットに変換すると
+                        <br></br>
+                        Hello_decryption!
+                        <br></br>
+                        となり、これが解答です。
+
+                        <br></br>
+                        <br></br>
+                        <h3>用語説明</h3>
+                        <br></br>
+                        <br></br>
+                        暗号とは、第三者には情報がわからないようにすることを目的とした情報の変換方法を意味します。
+                        <br></br>
+                        復号化とは、暗号化された情報から元の情報への変換を意味します。
+                        <br></br>
+                    </p>
+                </div>
+        },
         { title: "でかいクッキー", problemSentences: <p>トマトはおいしい、されど空はどこまでも高く広がるようだ。まるで、でかいクッキーを取り残していくように。</p>, ans: "0023", editorial: "" },
         { title: "扇風機", problemSentences: <p>トマトはおいしい、<br></br>されど空はどこまでも高く広がるようだ。<br></br>まるで、でかいクッキーを取り残していくように。</p>, ans: "0023", editorial: "" }
     ]
