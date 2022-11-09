@@ -219,6 +219,11 @@ function App() {
         //    `;
         //
         //    document.head.appendChild(scriptUrl);
+//        var viewport = document.querySelector("meta[name=viewport]");
+//        if(viewport)viewport.setAttribute('content', 'width=1220');
+
+        window.innerWidth=1920;
+        window.innerHeight=972;
 
         var width = q.current.width = window.innerWidth;
         var height = q.current.height = window.innerHeight * 3;
