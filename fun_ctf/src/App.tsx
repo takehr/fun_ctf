@@ -222,9 +222,6 @@ function App() {
 //        var viewport = document.querySelector("meta[name=viewport]");
 //        if(viewport)viewport.setAttribute('content', 'width=1220');
 
-        window.innerWidth=1920;
-        window.innerHeight=972;
-
         var width = q.current.width = window.innerWidth;
         var height = q.current.height = window.innerHeight * 3;
         var letters: any = Array(256).join(String(1)).split('');
@@ -452,13 +449,13 @@ function App() {
                         サイトを遷移したときに遷移先に送られる、遷移前のサイトの情報です。
                         <br></br>
                         <br></br>
-                         使用するソフトウェアにもよりますが、基本的にはデフォルト設定では、httpsのサイトからhttpsのサイトへ遷移するとき、遷移先のサーバーへRefferrerとして、遷移前サイトの完全なURLを送ります。通常の場合、URLに機密情報を含めることはないため問題ありません。しかし、サイト構築の初心者は意図せずに機密情報をURLに含めてしまう場合があります。
+                         使用するソフトウェアにもよりますが、基本的にはデフォルト設定では、httpsのサイトからhttpsのサイトへ遷移するとき、遷移先のサーバーへRefferrerとして、遷移前サイトの完全なURLを送ります。通常の場合、URLに機密情報を含めることはないため問題ありません。しかし、Webサイト構築の初心者は意図せずに機密情報をURLに含めてしまう場合があります。
                          <br></br>
                          <br></br>
                          まず、HTTP通信においてサーバーへ情報を送る方法には、POSTメソッド、GETメソッドの二つがよく使われます。POSTメソッドでは情報をContent部分に、GETメソッドでは情報をURLに追加して、情報を送ります。そのため、GETメソッドで機密情報を送ろうとするとURLに機密情報が含まれてしまいます。
                          <br></br>
                          <br></br>
-                         さらに、GETメソッドを使用しているサイトに掲示板のようなものがあった場合、悪意のある人が掲示板などに自分のサイトへのリンクを貼ることで、間違ってクリックした人のRefferrer、つまり、機密情報が漏洩する恐れがあります。
+                         また、もしGETメソッドで機密情報を扱っていても、Referrerが送られるのはWebサイトから遷移可能なWebサイト、つまり、ページにリンクが掲載されているWebサイト以外には基本的には機密情報は送られません。しかし、Webサイトに掲示板のようなものがあった場合では、悪意のある人が掲示板などに自分のサイトへのリンクを貼ることで、間違ってクリックした人のRefferrer、つまり、機密情報が漏洩する恐れがあります。
                     </p>
                 </div>
         },
