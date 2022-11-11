@@ -13,9 +13,9 @@ canvas{
 
 /* Hide scrollbar for IE, Edge and Firefox */
 body {
-  --color: #00ffdd;
+  --color: #000000;
   color: transparent;
-  text-shadow: 0 0 1px rgba(0,255,255,1);
+  text-shadow: 0 0 1px rgba(0,0,0,1);
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
@@ -36,8 +36,11 @@ body {
   width:fit-content;
   margin-left: auto;
   margin-right: auto;
-  animation: 2s 0s 1 ease-in showUp,
-  blink infinite 1.9s 2s cubic-bezier(0.1, -10, 0.8, -10) alternate-reverse;
+/*  animation: 2s 0s 1 ease-in showUp,
+*/
+/*
+  animation: blink infinite 1.9s 2s cubic-bezier(0.1, -10, 0.8, -10) alternate-reverse;
+*/
 }
 
 .App>hr {
@@ -59,9 +62,9 @@ body {
 
 @keyframes showUp{
     0% {
-        text-shadow:0 0 50px rgba(0,255,255,1.0);
+        text-shadow:0 0 50px rgba(0,0,0,1.0);
     }100%{
-        text-shadow:0 0 5px rgba(0,255,255,1.0);
+        text-shadow:0 0 5px rgba(0,0,0,1.0);
     }
 }
 
@@ -86,8 +89,11 @@ body {
 div.list-element {
   margin-bottom: 30px;
   margin-left:0px;
-  animation: 2s ease-in 0s 1 showUp,
-  blink_clearly infinite 1.3s 2s cubic-bezier(0.1, -10, 0.8, -10) alternate-reverse;
+/*  animation: 2s ease-in 0s 1 showUp,
+*/
+ /*
+ animation:blink_clearly infinite 1.3s 2s cubic-bezier(0.1, -10, 0.8, -10) alternate-reverse;
+*/
 }
 
 @keyframes moveRight{
@@ -166,9 +172,9 @@ button,input{
 }
 
 input{
-  --color: #00ffdd;
+  --color: #000000;
   color: transparent;
-  text-shadow: 0 0 1px rgba(0,255,255,1);
+  text-shadow: 0 0 1px rgba(0,0,0,1);
 /*  border: solid 1px;*/
   /*border-color: black;*/
   border: none;
@@ -208,9 +214,9 @@ button{
   font-size: 1.3rem;
   padding: 0.5rem;
 /*  background: #FFF;*/
-  background-color: rgba(0,255,240, 0);
-  color: rgba(0,255,240, 0.5);
-  text-shadow: 0 0 10px rgba(0,255,255,0.8);
+  background-color: rgba(0,0,0, 0);
+  color: rgba(0,0,0, 0.5);
+  text-shadow: 0 0 10px rgba(0,0,0,0.8);
   animation: blink_clearly infinite 1.3s 1s cubic-bezier(0.1, -10, 0.8, -10) alternate-reverse;
   font-family: 'Ricty Diminished', 'Monaco', 'Consolas', 'Courier New', Courier, monospace, sans-serif;
 }
@@ -223,21 +229,21 @@ button{
 
 @keyframes blink {
   0%{
-    text-shadow: 0 0 4px rgba(0,255,255,1);
+    text-shadow: 0 0 4px rgba(0,0,0,1);
   }90%{
-    text-shadow: 0 0 4.2px rgba(0,255,255,1);
+    text-shadow: 0 0 4.2px rgba(0,0,0,1);
   }100%{
-    text-shadow: 0 0 4.5px rgba(0,255,255,1);
+    text-shadow: 0 0 4.5px rgba(0,0,0,1);
   }
 }
 
 @keyframes blink_clearly {
   0%{
-    text-shadow: 0 0 1.68px rgba(0,255,255,1);
+    text-shadow: 0 0 1.68px rgba(0,0,0,1);
   }90%{
-    text-shadow: 0 0 1.72px rgba(0,255,255,1);
+    text-shadow: 0 0 1.72px rgba(0,0,0,1);
   }100%{
-    text-shadow: 0 0 1.79px rgba(0,255,255,1);
+    text-shadow: 0 0 1.79px rgba(0,0,0,1);
   }
 }
 
@@ -251,7 +257,7 @@ button{
   margin: 20vw;
   margin: 0px;
   color: transparent;
-  text-shadow: 0 0 0.08rem rgba(0,255,255,1);
+  text-shadow: 0 0 0.08rem rgba(0,0,0,1);
   animation: blink_clearly infinite 1.3s 1s cubic-bezier(0.1, -10, 0.8, -10) alternate-reverse;
 }
 
