@@ -16,7 +16,6 @@ function Problem(props: { title: string, problemSentences: any, ans: string, edi
                         <div className='problem-sentences-inflate'>
                             {props.editorial}
                             <button style={{ textAlign: "right" }} onClick={(e) => { e.stopPropagation(); setCheckEditorial(-1) }}>
-                                <br></br>
                                 問題に戻る
                             </button>
                         </div>
@@ -44,7 +43,6 @@ function Problem(props: { title: string, problemSentences: any, ans: string, edi
                             }}>submit</button>
                             <br></br>
                             <button style={{ textAlign: "right" }} onClick={(e) => { e.stopPropagation(); setCheckEditorial(1) }}>
-                                <br></br>
                                 解説をみる
                             </button>
                         </div>
@@ -77,7 +75,6 @@ function Problem(props: { title: string, problemSentences: any, ans: string, edi
                                 }}>submit</button>
                                 <br></br>
                                 <button style={{ textAlign: "right" }} onClick={(e) => { e.stopPropagation(); setCheckEditorial(1) }}>
-                                <br></br>
                                     解説をみる
                                 </button>
                             </div>
@@ -219,11 +216,9 @@ function App() {
         //    `;
         //
         //    document.head.appendChild(scriptUrl);
-//        var viewport = document.querySelector("meta[name=viewport]");
-//        if(viewport)viewport.setAttribute('content', 'width=1220');
 
         var width = q.current.width = window.innerWidth;
-        var height = q.current.height = window.innerHeight * 3;
+        var height = q.current.height = window.innerHeight;
         var letters: any = Array(256).join(String(1)).split('');
         //['1',,,,'1']
 
