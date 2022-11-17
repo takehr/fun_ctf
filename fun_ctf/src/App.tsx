@@ -119,7 +119,7 @@ function App() {
             function addBinary(){
               if(textNodes.reduce( (pre, n) => pre + n[0].nodeValue.length, 0) >= textNodes.reduce( (pre, n) => pre + n[1].length, 0))return;
               textNodes.map( (n) => {
-                if(n[0].nodeValue.length<n[1].length)n[0].nodeValue+=Math.floor(Math.random()*2).toString();
+                if(n[0].nodeValue.length<n[1].length)n[0].nodeValue+= (n[1][n[0].nodeValue.length]!=" ")?Math.floor(Math.random()*2).toString():" ";
               });
               setTimeout(addBinary, 30);
             }
