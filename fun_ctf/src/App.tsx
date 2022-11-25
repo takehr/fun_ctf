@@ -7,8 +7,11 @@ function Problem(props: { title: string, problemSentences: any, ans: string, edi
     const [checkEditorial, setCheckEditorial] = useState<number>(0);
     const [flag, setFlag] = useState<string>("");
     const inputId = "id" + Math.random().toString().replace(".", "d");
+    const listId = "id" + Math.random().toString().replace(".", "d");
     return (
-        <div className='list-element' onClick={() => setClicked(clicked === 0 ? 1 : -clicked)}>
+        <div className='list-element' id={listId} onClick={() => {
+            setClicked(clicked === 0 ? 1 : -clicked);
+        }}>
             {props.title}
             {
                 clicked === 1 ?
@@ -78,7 +81,7 @@ function Problem(props: { title: string, problemSentences: any, ans: string, edi
                                     解説をみる
                                 </button>
                             </div>
-                        : undefined
+                        :undefined
             }
             {/*        <hr></hr>
           */}
@@ -86,55 +89,101 @@ function Problem(props: { title: string, problemSentences: any, ans: string, edi
     )
 }
 
+function binaryEffect(id:string, v1:number, v2:number, n:number){
+    //get all pointer and copy text and reflesh
+    let root = document.getElementById(id);
+    let textNodes:any = [];
+    function recAddTextChildNode(node:any){
+      if(!node.hasChildNodes()){
+        if(node.nodeName==="#text"&&node.nodeValue){
+          textNodes.push([node, node.nodeValue.split("")]);
+          node.nodeValue="";
+        }
+        return;
+      }
+      let child = node.firstChild;
+      while(child){
+        recAddTextChildNode(child);
+        child = child.nextSibling;
+      }
+    }
+    recAddTextChildNode(root);
+
+    //add 0/1 length gradualy
+    function addBinary(){
+      if(textNodes.reduce( (pre:any, n:any) => pre + n[0].nodeValue.length, 0) >= textNodes.reduce( (pre:any, n:any) => pre + n[1].length, 0))return;
+      textNodes.map( (n:any) => {
+        if(n[0].nodeValue.length<n[1].length)n[0].nodeValue+= (n[1][n[0].nodeValue.length]!==" ")?Math.floor(Math.random()*2).toString():" ";
+      });
+      setTimeout(addBinary, v1);
+    }
+    for(let i=0;i<n;i++)addBinary();
+
+    //replace 0/1 to right one
+    function replaceToRight(){
+      if(textNodes.reduce( (pre:any, n:any) => pre + (n[0].nodeValue==="".concat(n[1])) , 0) >= textNodes.length)return;
+      textNodes.map( (n:any) => {
+        const idx=Math.floor(Math.random()*n[1].length);
+        n[0].nodeValue = n[0].nodeValue.substring(0,idx) + n[1][idx] + n[0].nodeValue.substring(idx+1, n[1].length);
+      });
+      setTimeout(replaceToRight, v2);
+    }
+    for(let i=0;i<n;i++)setTimeout(replaceToRight, 1000);
+}
+
 function App() {
 
     var q: any = useRef(null)
+    window.onload = () => binaryEffect("root",20,30,1);
 
     useEffect(() => {
+
+
+
             const scriptUrl = document.createElement('script');
 
             scriptUrl.innerHTML =
             `
-            //get all pointer and copy text and reflesh
-            let root = document.getElementById("root");
-            let textNodes = [];
-            function recAddTextChildNode(node){
-              if(!node.hasChildNodes()){
-                if(node.nodeName=="#text"&&node.nodeValue){
-                  textNodes.push([node, node.nodeValue.split("")]);
-                  node.nodeValue="";
-                }
-                return;
-              }
-              let child = node.firstChild;
-              while(child){
-                recAddTextChildNode(child);
-                child = child.nextSibling;
-              }
-            }
-            recAddTextChildNode(root);
-            textNodes.map( (n) => console.log(n.nodeValue));
-
-            //add 0/1 length gradualy
-            function addBinary(){
-              if(textNodes.reduce( (pre, n) => pre + n[0].nodeValue.length, 0) >= textNodes.reduce( (pre, n) => pre + n[1].length, 0))return;
-              textNodes.map( (n) => {
-                if(n[0].nodeValue.length<n[1].length)n[0].nodeValue+= (n[1][n[0].nodeValue.length]!=" ")?Math.floor(Math.random()*2).toString():" ";
-              });
-              setTimeout(addBinary, 30);
-            }
-            addBinary();
-
-            //replace 0/1 to right one
-            function replaceToRight(){
-              if(textNodes.reduce( (pre, n) => pre + (n[0].nodeValue=="".concat(n[1])) , 0) >= textNodes.length)return;
-              textNodes.map( (n) => {
-                idx=Math.floor(Math.random()*n[1].length);
-                n[0].nodeValue = n[0].nodeValue.substring(0,idx) + n[1][idx] + n[0].nodeValue.substring(idx+1, n[1].length);
-              });
-              setTimeout(replaceToRight, 20);
-            }
-            setTimeout(replaceToRight, 1000);
+//            //get all pointer and copy text and reflesh
+//            let root = document.getElementById("root");
+//            let textNodes = [];
+//            function recAddTextChildNode(node){
+//              if(!node.hasChildNodes()){
+//                if(node.nodeName=="#text"&&node.nodeValue){
+//                  textNodes.push([node, node.nodeValue.split("")]);
+//                  node.nodeValue="";
+//                }
+//                return;
+//              }
+//              let child = node.firstChild;
+//              while(child){
+//                recAddTextChildNode(child);
+//                child = child.nextSibling;
+//              }
+//            }
+//            recAddTextChildNode(root);
+//            textNodes.map( (n) => console.log(n.nodeValue));
+//
+//            //add 0/1 length gradualy
+//            function addBinary(){
+//              if(textNodes.reduce( (pre, n) => pre + n[0].nodeValue.length, 0) >= textNodes.reduce( (pre, n) => pre + n[1].length, 0))return;
+//              textNodes.map( (n) => {
+//                if(n[0].nodeValue.length<n[1].length)n[0].nodeValue+= (n[1][n[0].nodeValue.length]!=" ")?Math.floor(Math.random()*2).toString():" ";
+//              });
+//              setTimeout(addBinary, 30);
+//            }
+//            addBinary();
+//
+//            //replace 0/1 to right one
+//            function replaceToRight(){
+//              if(textNodes.reduce( (pre, n) => pre + (n[0].nodeValue=="".concat(n[1])) , 0) >= textNodes.length)return;
+//              textNodes.map( (n) => {
+//                idx=Math.floor(Math.random()*n[1].length);
+//                n[0].nodeValue = n[0].nodeValue.substring(0,idx) + n[1][idx] + n[0].nodeValue.substring(idx+1, n[1].length);
+//              });
+//              setTimeout(replaceToRight, 20);
+//            }
+//            setTimeout(replaceToRight, 1000);
             `;
         
             document.head.appendChild(scriptUrl);
