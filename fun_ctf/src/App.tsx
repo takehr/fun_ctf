@@ -138,25 +138,24 @@ function App() {
     useEffect(()=>{
         var width = q.current.width = window.innerWidth;
         var height = q.current.height = window.innerHeight;
-	var ctx = q.current.getContext("2d");
-	ctx.font = "20px serif";
+	    var ctx = q.current.getContext("2d");
+	    ctx.font = "20px serif";
 	
-	var codes = new Array(64);
-	for(let i=0;i<64;i++)codes[i]=[Math.random()*width,0];
+	    var codes = new Array(64);
+	    for(let i=0;i<64;i++)codes[i]=[Math.random()*width,0];
 
-	function update(){
+	    function update(){
             ctx.fillStyle = 'rgba(255,255,255,.05)';
             ctx.fillRect(0, 0, width, height);//overlay
             ctx.fillStyle = '#000';
-	    codes.map((code, idx) => {
-	    	ctx.fillText(String.fromCharCode(3e4 + Math.random() * 33), code[0], code[1]);
-	    	codes[idx]=[ code[1]+10>800? Math.random()*width: code[0], code[1]+10>800+Math.random()*1e5? 0: code[1]+20];
-		});
+	        codes.map((code, idx) => {
+	            ctx.fillText(String.fromCharCode(3e4 + Math.random() * 33), code[0], code[1]);
+	            codes[idx]=[ code[1]+10>800? Math.random()*width: code[0], code[1]+10>800+Math.random()*1e5? 0: code[1]+20];
+	        });
             q.current.getContext('2d').fillStyle = 'rgba(255,255,255,0.6)';
             q.current.getContext('2d').fillRect(width / 2 - 430, 0, 860, 4000);
-	}
-
-	setInterval(update, 30);
+	    }
+	    setInterval(update, 30);
     });
 
     const problemList = [
