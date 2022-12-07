@@ -136,6 +136,7 @@ function App() {
     var q: any = useRef(null)
     window.onload = () => binaryEffect("root",20,30,1);
     useEffect(()=>{
+        document.title = 'fun_ctf';
         var width = q.current.width = window.innerWidth;
         var height = q.current.height = window.innerHeight;
 	    var ctx = q.current.getContext("2d");
