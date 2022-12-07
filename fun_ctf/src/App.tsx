@@ -189,7 +189,7 @@ function App() {
                     <br></br>
                     <h1>解説</h1>
                     <h3>HTTPを利用しているサイトは危険だとなぜ言われているのでしょうか？</h3>
-                    <p style={{ textAlign: "left" }}>
+                    <p className="content"style={{ textAlign: "left" }}>
                         実はHTTPのサイトを利用することが必ずしも危険というわけではありません。
                         例えば、この問題の状況では、free-wifiを利用していなければ情報の漏洩は起こらない可能性が高いでしょう。
                         また、信頼のできないサイトの場合、HTTPSを利用していても情報は漏洩する可能性があります。
@@ -205,12 +205,6 @@ function App() {
                     </p>
                     <br></br>
                     <br></br>
-                    <h2>Coffee break</h2>
-                    <h3>Wire Shark</h3>
-                    <p>Wire Sharkとはネットワークのパケット解析用ソフトウェアです。
-                        <br></br>
-                        インストール方法、基本的な使い方、見方、読み込み法、
-                    </p>
                 </div>
         },
         { 
@@ -248,7 +242,7 @@ function App() {
                     <br></br>
                     <h1>解説</h1>
                     <h3>RSA暗号とは</h3>
-                    <p style={{ textAlign: "left" }}>
+                    <p className="content"style={{ textAlign: "left" }}>
                         現代では様々ある暗号の中でも、
                         暗号化・復号化に鍵と呼ばれる合言葉のようなものを必要とする暗号である
                         共通鍵暗号、公開鍵暗号の2種類が良く使われています。
@@ -292,16 +286,6 @@ function App() {
                         MをASCIIコードでアルファベットに変換すると
                         Hello_decryption!
                         となり、これが解答です。
-
-                        <br></br>
-                        <br></br>
-                        <h3>用語説明</h3>
-                        <br></br>
-                        <br></br>
-                        暗号とは、第三者には情報がわからないようにすることを目的とした情報の変換方法を意味します。
-                        <br></br>
-                        復号化とは、暗号化された情報から元の情報への変換を意味します。
-                        <br></br>
                     </p>
                 </div>
         },
@@ -331,7 +315,7 @@ function App() {
                     <br></br>
                     <h1>解説</h1>
                     <h3>Referrerとは</h3>
-                    <p style={{ textAlign: "left" }}>
+                    <p style={{ textAlign: "left" }} className="content">
                         サイトを遷移したときに遷移先に送られる、遷移前のサイトの情報です。
                         <br></br>
                         <br></br>
@@ -345,7 +329,6 @@ function App() {
                     </p>
                 </div>
         },
-        { title: "扇風機", problemSentences: <p>トマトはおいしい、<br></br>されど空はどこまでも高く広がるようだ。<br></br>まるで、でかいクッキーを取り残していくように。</p>, ans: "0023", editorial: "" }
     ]
 
     return (
